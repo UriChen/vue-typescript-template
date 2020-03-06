@@ -12,4 +12,5 @@ declare module '*.jpeg' {
 }
 
 declare module 'secure-web-storage'
+declare module 'wc-messagebox'
 

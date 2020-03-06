@@ -105,13 +105,11 @@ export const handleError = async(
   }
 
   if (ajaxMessage) {
-    console.log(ajaxMessage)
-    // _Message.error(ajaxMessage)
+    Vue.prototype.$toast(ajaxMessage)
     return
   }
 
-  console.log(message || errorString)
-  // _Message.error(message || errorString)
+  Vue.prototype.$toast.error(message || errorString)
 
   if (!isCaptureError) {
     throw error

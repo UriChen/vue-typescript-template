@@ -11662,6 +11662,11 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   dependencies:
     minimalistic-assert "^1.0.0"
 
+wc-messagebox@^1.10.1:
+  version "1.10.1"
+  resolved "https://registry.npm.taobao.org/wc-messagebox/download/wc-messagebox-1.10.1.tgz#1490b9380856b152bb9ad5b396fd7677abe5e856"
+  integrity sha1-FJC5OAhWsVK7mtWzlv12d6vl6FY=
+
 wcwidth@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/wcwidth/download/wcwidth-1.0.1.tgz#f0b0dcf915bc5ff1528afadb2c0e17b532da2fe8"

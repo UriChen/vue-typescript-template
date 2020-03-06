@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import axios from 'axios'
 import { UserModule } from '@/store/modules/user'
 import { REQUEST_CANCEL, RESOLVED_ERROR } from '@/utils/handleErrors'
@@ -54,16 +55,12 @@ service.interceptors.response.use(
     const res = response.data
     const isLogout = [50008, 50012, 50014].includes(res.code)
     if (isLogout) {
-      // _MessageBox.alert(
-      //   '你已被登出，即将跳转到登录页面',
-      //   '提示',
-      //   {
-      //     confirmButtonText: '确定'
-      //   }
-      // ).finally(() => {
-      //   UserModule.ResetToken()
-      //   location.reload() // To prevent bugs from vue-router
-      // })
+      Vue.prototype.$alert({
+        title: '提示',
+        content: '你已被登出，请重新登录!'
+      })
+      UserModule.ResetToken()
+      location.reload()
       return Promise.reject(RESOLVED_ERROR)
     }
     return response

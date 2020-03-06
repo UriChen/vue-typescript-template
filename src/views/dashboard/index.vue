@@ -11,6 +11,20 @@
     >
       退出登录
     </button>
+    <button
+      class="back-btn w-32 p-1 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+      type="button"
+      @click.prevent="$toast('测试toast')"
+    >
+      测试toast
+    </button>
+    <button
+      class="back-btn w-32 p-1 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+      type="button"
+      @click.prevent="testLoading"
+    >
+      测试loading
+    </button>
   </div>
 </template>
 
@@ -33,6 +47,11 @@ export default class Dashboard extends Vue {
       return
     }
     this.$router.push(`/account/login?redirect=${this.$route.fullPath}`)
+  }
+
+  private testLoading() {
+    this.$loading.show('测试loading')
+    setTimeout(this.$loading.hide, 2000)
   }
 }
 </script>

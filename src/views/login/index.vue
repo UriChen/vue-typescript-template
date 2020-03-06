@@ -106,13 +106,11 @@ export default class Login extends Vue {
     const [err, data] = await to(this.userLogin(this.loginForm))
     this.loading = false
     if (err || !data) {
-      // this.$alert('登录失败!', '提示', {
-      //   confirmButtonText: '确定'
-      // })
+      this.$alert('登录失败!')
       return
     }
     if (data.success !== 1) {
-      // this.$message.error(data.message)
+      this.$alert(data.message)
       return
     }
     this.$router.push({
