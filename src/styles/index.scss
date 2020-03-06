@@ -1,0 +1,52 @@
+@import './_variables.scss';
+@import './_mixins.scss';
+@import './_transition.scss';
+@import './_svgicon.scss';
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+img, svg, video, canvas, audio, iframe, embed, object {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#app {
+  height: 100%;
+}
+
+a,
+a:focus,
+a:hover {
+  color: inherit;
+  outline: none;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+label {
+  font-weight: 700;
+}
+
+button {
+  outline: none!important;
+}
+
+
+

@@ -1,0 +1,7 @@
+[defaults]
+url = https://sentry.io/
+org = urichen
+project = vue-element-typescript-admin
+
+[auth]
+token = 1ffcda956d5f444fba899f2c53a72b22288e22273ecc43ee81177079e0529cae

@@ -1,0 +1,147 @@
+// 清除浮动
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// 滚动条样式
+@mixin scrollBar {
+  &::-webkit-scrollbar-track-piece {
+    background: #d3dce6;
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #99a9bf;
+    border-radius: 20px;
+  }
+}
+
+// 媒体查询
+@mixin screen($min,$max) {
+  @media screen and (min-width: $min) and (max-width: $max) {
+    @content; //@content代表内容是自定义的
+  }
+}
+
+@mixin min-screen($width) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin max-screen($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+
+// 文本省略号
+@mixin multiEllipsis($line:2){
+  overflow : hidden;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}
+
+// 文本不换行+省略号
+@mixin no-wrap(){
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+// 美化placeholder
+@mixin beauty-placeholder($fz, $color: #999, $align: left) {
+  &:-moz-placeholder {
+    font-size: $fz;
+    color: $color;
+    text-align: $align;
+  }
+  &:-ms-input-placeholder {
+    font-size: $fz;
+    color: $color;
+    text-align: $align;
+  }
+  &::-webkit-input-placeholder {
+    font-size: $fz;
+    color: $color;
+    text-align: $align;
+  }
+}
+
+// 美化文本选中
+@mixin beauty-select($color, $bgcolor) {
+  &::selection {
+    color: $color;
+    background-color: $bgcolor;
+  }
+}
+
+// 毛玻璃效果
+@mixin blur($blur: 10px) {
+  -webkit-filter: blur($blur);
+  -moz-filter: blur($blur);
+  -o-filter: blur($blur);
+  -ms-filter: blur($blur);
+  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='${blur}');
+  filter: blur($blur);
+  *zoom: 1;
+}
+
+// 1像素边框
+// 使用: @include border-1px(red,bottom);如果想要多边的话可以用类似数组的这种传参方式（[bottom top]）
+// 需要添加此类名 <div class="border-1px">
+
+$border-poses:top,
+right,
+bottom,
+left;
+$color:#F3F3F3;
+
+@mixin border-1px($color, $pos) {
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    @each $item in $pos {
+      border-#{$item}: 1px solid $color;
+      #{$item}: 0;
+    }
+  }
+}
+@media (-webkit-min-device-pixel-ratio:1.5),
+(min-device-pixel-ratio: 1.5) {
+  .border-1px::after {
+    -webkit-transform: scaleY(0.7);
+    transform: scaleY(0.7);
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio:2),
+(min-device-pixel-ratio: 2) {
+  .border-1px::after {
+    -webkit-transform: scaleY(0.5); //像素比为2的时候，我们设置缩放为0.5
+    transform: scaleY(0.5);
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio:3),
+(min-device-pixel-ratio: 3) {
+  .border-1px::after {
+    -webkit-transform: scaleY(0.333333); //像素比为3的时候，我们设置缩放为0.33333
+    transform: scaleY(0.333333);
+  }
+}
+
