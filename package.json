@@ -19,6 +19,7 @@
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "crypto-js": "^4.0.0",
+    "ismobilejs": "^1.0.3",
     "js-cookie": "^2.2.1",
     "lodash": "^4.17.15",
     "normalize.css": "^8.0.1",
@@ -36,8 +37,7 @@
     "vuex": "^3.1.2",
     "vuex-class": "^0.3.2",
     "vuex-module-decorators": "^0.16.1",
-    "vuex-persistedstate": "^2.7.1",
-    "wc-messagebox": "^1.10.1"
+    "vuex-persistedstate": "^2.7.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",

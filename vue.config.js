@@ -125,7 +125,7 @@ module.exports = {
     // optionally replace with another progress output plugin
     config.plugin('simple-progress-webpack-plugin').use(require.resolve('simple-progress-webpack-plugin'), [
       {
-        format: 'compact' // options are minimal, compact, expanded, verbose
+        format: 'minimal' // options are minimal, compact, expanded, verbose
       }
     ])
   }

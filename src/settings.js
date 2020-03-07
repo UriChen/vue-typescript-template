@@ -48,13 +48,7 @@ const cliSettings = IS_PROD ? prodSettings : devSettings
 
 const appSettings = {
   title: cliSettings.title,
-  theme: 'primary',
-  showSettings: true,
-  showTagsView: true,
-  fixedHeader: false,
-  errorLog: ['production', 'development'],
-  showSidebarLogo: true,
-  sidebarTextTheme: true
+  theme: 'primary'
 }
 
 const sentryCliSettings = {

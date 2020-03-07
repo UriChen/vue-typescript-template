@@ -9,7 +9,7 @@ import store from '@/store'
 import router from '@/router'
 
 // plugins
-import '@/plugins/ios-message'
+import '@/components/MessageBox'
 import i18n from '@/lang'
 import '@/icons/components'
 import '@/permission'

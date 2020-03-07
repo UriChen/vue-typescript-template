@@ -55,12 +55,10 @@ service.interceptors.response.use(
     const res = response.data
     const isLogout = [50008, 50012, 50014].includes(res.code)
     if (isLogout) {
-      Vue.prototype.$alert({
-        title: '提示',
-        content: '你已被登出，请重新登录!'
+      Vue.prototype.$alert('你已被登出，请重新登录!').finally(() => {
+        UserModule.ResetToken()
+        location.reload()
       })
-      UserModule.ResetToken()
-      location.reload()
       return Promise.reject(RESOLVED_ERROR)
     }
     return response

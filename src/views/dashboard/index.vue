@@ -14,6 +14,13 @@
     <button
       class="back-btn w-32 p-1 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
       type="button"
+      @click.prevent="$confirm('测试Confirm').catch(e => {})"
+    >
+      测试Confirm
+    </button>
+    <button
+      class="back-btn w-32 p-1 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+      type="button"
       @click.prevent="$toast('测试toast')"
     >
       测试toast

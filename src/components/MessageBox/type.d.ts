@@ -11,7 +11,7 @@ declare module 'vue/types/vue' {
       content: string
       btnText?: string
       component?: any
-    }) => void
+    }) => Promise<any>
     $confirm: (content: string | {
       title?: string
       content: string
@@ -20,7 +20,7 @@ declare module 'vue/types/vue' {
       noStyle?: object
       noText?: string
       component?: any
-    }) => void
+    }) => Promise<any>
     $toast: (message: string, options?: {
       path?: string
       durtaion?: number
