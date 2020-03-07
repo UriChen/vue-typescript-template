@@ -16,8 +16,11 @@ const APP_NAME = 'vue-typescript-template'
 const VERSION = '@1.0.0'
 const HTTPS = false
 
-const DEV_HOST = Object.values(iptable).find(item => item !== '127.0.0.1') || 'localhost'
-const DEV_PORT = 8080
+const DEV_HOST = Object.values(iptable).find(item => item !== '127.0.0.1') || '192.168.0.105'
+const DEV_PORT = 3000
+const DEV_SERVER_PORT = 8080
+
+const MOCK_PORT = 3000
 
 const PROD_HOST = DEV_HOST // todo: 发布时要改为服务器域名
 const PROD_PORT = DEV_PORT // todo: 发布时要改为服务器端口
@@ -39,6 +42,8 @@ const prodSettings = {
 const devSettings = {
   ...prodSettings,
   title: `${APP_NAME} for dev`,
+  mockPort: MOCK_PORT,
+  devServerPort: DEV_SERVER_PORT,
   host: DEV_HOST,
   port: DEV_PORT,
   baseUrl: `${HTTPS ? 'https' : 'http'}://${DEV_HOST}:${DEV_PORT}`

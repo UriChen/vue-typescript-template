@@ -16,7 +16,7 @@ module.exports = {
   productionSourceMap: true,
   lintOnSave: process.env.NODE_ENV !== 'production',
   devServer: {
-    port: cliSettings.port,
+    port: cliSettings.devServerPort,
     progress: false,
     https: cliSettings.https,
     disableHostCheck: true,

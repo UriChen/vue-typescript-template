@@ -4,6 +4,8 @@ import compression from 'compression'
 import morgan from 'morgan'
 import cors from 'cors'
 import http from 'http'
+import https from 'https'
+import os from 'os'
 import path from 'path'
 import yaml from 'yamljs'
 import * as api from './api'
@@ -12,8 +14,21 @@ import settings from '../src/settings'
 
 const cliSettings = settings.cliSettings
 
+const iptable: any = {}
+const ifaces = os.networkInterfaces()
+
+for (const dev in ifaces) {
+  ifaces[dev].forEach(function(details, alias) {
+    if (details.family === 'IPv4') {
+      iptable[dev + (alias ? ':' + alias : '')] = details.address
+    }
+  })
+}
+
+const host: any = Object.values(iptable).find(item => item !== '127.0.0.1') || 'localhost'
+
 const app = express()
-const port = cliSettings.port
+const port = cliSettings.mockPort
 const { connector, summarise } = require('swagger-routes-express')
 
 // Compression
@@ -60,10 +75,10 @@ app.use((req, res, next) => {
 })
 
 // Create HTTP server.
-const server = http.createServer(app)
+const server = cliSettings.https ? https.createServer(app) : http.createServer(app)
 
 // Listen on provided port, on all network interfaces.
-server.listen(port)
+server.listen(port, host)
 server.on('error', onError)
 console.log('Mock server started on port ' + port + '!')
 
