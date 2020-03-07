@@ -1,22 +1,24 @@
 const path = require('path')
-const settings = require('./src/settings.js').cliSettings
+const settings = require('./src/settings.js')
 const SentryWebpackPlugin = require('@sentry/webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
+const { cliSettings, sentryCliSettings } = settings
 
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
 module.exports = {
-  publicPath: settings.publicPath,
-  outputDir: settings.outputDir,
-  assetsDir: settings.assetsDir,
+  publicPath: cliSettings.publicPath,
+  outputDir: cliSettings.outputDir,
+  assetsDir: cliSettings.assetsDir,
   productionSourceMap: true,
   lintOnSave: process.env.NODE_ENV !== 'production',
   devServer: {
-    port: settings.port,
+    port: cliSettings.port,
     progress: false,
-    https: settings.https,
+    https: cliSettings.https,
     disableHostCheck: true,
     open: false,
     overlay: {
@@ -60,7 +62,7 @@ module.exports = {
   chainWebpack(config) {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
-    config.set('name', settings.title)
+    config.set('name', cliSettings.title)
     // set preserveWhitespace
     config.module
       .rule('vue')
@@ -106,10 +108,10 @@ module.exports = {
       // sentry错误监控配置(自动上传sourcemap)
       config.plugin('sentry').use(SentryWebpackPlugin, [{
         ignore: ['node_modules'],
-        include: `${settings.outputDir}/${settings.assetsDir}/js`, // 上传的js
+        include: `${cliSettings.outputDir}/${cliSettings.assetsDir}/js`, // 上传的js
         configFile: 'sentry.properties', // 配置文件地址
-        release: process.env.RELEASE_VERSION, // 版本号
-        urlPrefix: `~/${settings.name}/${settings.assetsDir}/js` // cdn js的代码路径前缀
+        release: sentryCliSettings.release, // 版本号
+        urlPrefix: `~/${cliSettings.name}/${cliSettings.assetsDir}/js` // cdn js的代码路径前缀
       }])
 
       // 构建完成后自动删除sourceMap文件
@@ -117,7 +119,7 @@ module.exports = {
         {
           verbose: true, // 控制台打印信息
           cleanOnceBeforeBuildPatterns: [], // 构建前不需要删除
-          cleanAfterEveryBuildPatterns: [`${settings.assetsDir}/js/*.map`], // 构建完成后删除指定的文件
+          cleanAfterEveryBuildPatterns: [`${cliSettings.assetsDir}/js/*.map`], // 构建完成后删除指定的文件
           protectWebpackAssets: false // 必须设置为false否则文件不会被删除
         }
       ])

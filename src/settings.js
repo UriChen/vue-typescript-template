@@ -26,7 +26,7 @@ const prodSettings = {
   name: APP_NAME, // 项目名
   title: APP_NAME, // 网页标题
   version: VERSION, // 版本号
-  https: HTTPS,
+  https: HTTPS, // 是否开启https
   host: PROD_HOST, // 域名
   port: PROD_PORT, // 端口
   baseUrl: `${HTTPS ? 'https' : 'http'}://${PROD_HOST}:${PROD_PORT}`, // 协议域名端口号
