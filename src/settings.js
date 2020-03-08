@@ -14,7 +14,7 @@ const IS_PROD = process.env.NODE_ENV === 'production'
 
 const APP_NAME = 'vue-typescript-template'
 const VERSION = '@1.0.0'
-const HTTPS = false
+const HTTPS = true
 
 const DEV_HOST = Object.values(iptable).find(item => item !== '127.0.0.1') || '192.168.0.105'
 const DEV_PORT = 3000

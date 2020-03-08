@@ -7,7 +7,7 @@
     <button
       class="back-btn w-32 p-1 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
       type="button"
-      @click.prevent="logout"
+      @click.prevent="handleUserLogout"
     >
       退出登录
     </button>
@@ -44,13 +44,13 @@ import to from 'await-to-js'
   name: 'Dashboard'
 })
 export default class Dashboard extends Vue {
-  @Action('user/userLogout') private userLogout!: () => Promise<any>
+  @Action('user/UserLogout') private UserLogout!: () => Promise<any>
   /**
    * 退出登录
    */
-  private async logout() {
-    const [err, data] = await to(this.userLogout())
-    if (err || !data) {
+  private async handleUserLogout() {
+    const [failed] = await to(this.UserLogout())
+    if (failed) {
       return
     }
     this.$router.push(`/account/login?redirect=${this.$route.fullPath}`)

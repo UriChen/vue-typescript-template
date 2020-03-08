@@ -24,7 +24,7 @@ service.interceptors.request.use(
   (config) => {
     // Add token header to every request, you can add other custom headers here
     if (UserModule.token) {
-      config.headers['token'] = UserModule.token
+      config.headers['X-Token'] = UserModule.token
     }
     // 保留正在进行的请求
     config.cancelToken = new axios.CancelToken(cancel => {
@@ -54,6 +54,11 @@ service.interceptors.response.use(
     // You can change this part for your own usage.
     // 根据api实际情况自行判断
     const res = response.data
+
+    if (res.code === 20000) {
+      return res
+    }
+
     const isLogout = [50008, 50012, 50014].includes(res.code)
     if (isLogout) {
       Vue.prototype.$alert('你已被登出，请重新登录!').finally(() => {
@@ -62,7 +67,8 @@ service.interceptors.response.use(
       })
       return Promise.reject(RESOLVED_ERROR)
     }
-    return response
+    Vue.prototype.$alert(res.message)
+    return Promise.reject(RESOLVED_ERROR)
   },
   (error) => {
     if (axios.isCancel(error)) {

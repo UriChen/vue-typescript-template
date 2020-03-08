@@ -9,7 +9,7 @@
           <h3 class="pt-4 text-2xl text-center">{{ $t('login.title') }}</h3>
           <form
             class="login-form"
-            @keyup.enter.prevent="handleLogin"
+            @keyup.enter.prevent="handleUserLogin"
           >
             <div class="mb-4">
               <label class="block mb-2 text-sm font-bold text-gray-700" for="username">
@@ -39,7 +39,7 @@
               <button
                 class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
                 type="button"
-                @click.prevent="handleLogin"
+                @click.prevent="handleUserLogin"
               >
                 Sign In
               </button>
@@ -72,6 +72,7 @@
 import { Component, Vue, Watch } from 'vue-property-decorator'
 import { Route } from 'vue-router'
 import { Dictionary } from 'vue-router/types/router'
+import { ILoginParams } from '@/api/types'
 import { Action } from 'vuex-class'
 import to from 'await-to-js'
 
@@ -83,12 +84,10 @@ export default class Login extends Vue {
     username: '',
     password: ''
   }
-  private loading = false
   private redirect?: string
   private otherQuery: Dictionary<string> = {}
 
-  @Action('user/userLogin')
-  private userLogin!: (userInfo: { username: string, password: string }) => Promise<any>
+  @Action('user/UserLogin') private UserLogin!: (params: ILoginParams) => Promise<any>
 
   @Watch('$route', { immediate: true })
   private onRouteChange(route: Route) {
@@ -101,16 +100,9 @@ export default class Login extends Vue {
     }
   }
 
-  private async handleLogin() {
-    this.loading = true
-    const [err, data] = await to(this.userLogin(this.loginForm))
-    this.loading = false
-    if (err || !data) {
-      this.$alert('登录失败!')
-      return
-    }
-    if (data.success !== 1) {
-      this.$alert(data.message)
+  private async handleUserLogin() {
+    const [failed] = await to(this.UserLogin(this.loginForm))
+    if (failed) {
       return
     }
     this.$router.push({
