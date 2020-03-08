@@ -28,6 +28,7 @@
     "screenfull": "^5.0.2",
     "secure-web-storage": "^1.0.2",
     "tailwindcss": "^1.2.0",
+    "vconsole": "^3.3.4",
     "vue": "^2.6.10",
     "vue-class-component": "^7.2.3",
     "vue-i18n": "^8.15.4",
