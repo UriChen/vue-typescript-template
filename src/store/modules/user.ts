@@ -88,6 +88,7 @@ class User extends VuexModule implements IUserState {
         reject('failed')
         return
       }
+      setToken(data.token)
       this.SET_TOKEN(data.token)
       resolve('success')
     })
