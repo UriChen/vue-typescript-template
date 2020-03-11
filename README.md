@@ -1,8 +1,4 @@
 
-<p align="center">
-  <img width="120" src="src/assets/common/logo.png">
-</p>
-
 ## 总览
 
 vue + typescript模板(自用)，它基于 [vue](https://github.com/vuejs/vue), [typescript](https://www.typescriptlang.org/), [tailwindcss](https://www.tailwindcss.cn/), [sentry](https://docs.sentry.io/)等实现。
@@ -10,6 +6,7 @@ vue + typescript模板(自用)，它基于 [vue](https://github.com/vuejs/vue), 
 ## 功能
 
 ```txt
+
 - vue全家桶最新版本集成
   - 所有依赖全部使用最新版本
   - typescript 最新版本
@@ -35,7 +32,7 @@ vue + typescript模板(自用)，它基于 [vue](https://github.com/vuejs/vue), 
   - 权限配置
 
 - 多环境发布
-  - Dev / Stage / Prod
+  - Dev / Prod
 
 - 全局功能
   - 国际化多语言
@@ -55,6 +52,8 @@ vue + typescript模板(自用)，它基于 [vue](https://github.com/vuejs/vue), 
   - purgecss自动清除未使用css代码
   
 - eslint 代码检查
+
+- typedoc 自动生成文档
 
 ```
 
@@ -97,15 +96,16 @@ IDE工具强烈推荐使用[webstorm](https://www.jetbrains.com/webstorm/) 2019.
 │   ├── router                 # 路由
 │   ├── store                  # 全局 vuex store
 │   ├── styles                 # 全局样式
+│   ├── types                  # ts类型定义
 │   ├── utils                  # 全局方法
 │   ├── views                  # 所有页面
 │   ├── App.vue                # 入口页面
 │   ├── main.js                # 入口文件 加载组件 初始化等
 │   ├── permission.ts          # 权限管理
-│   ├── settings.ts            # 设置文件ts版导出用
-│   │   └─── settings.js       # 设置文件js
-│   └── shims.d.ts             # 模块注入
-├── tests                      # 测试
+│   └── settings.ts            # 设置文件ts版导出用
+│       └─── settings.js       # 设置文件js
+├── tests                      # 单元测试
+├── webpackPlugins             # webpack插件
 ├── .browserslistrc            # browserslistrc 配置文件
 ├── .editorconfig              # 编辑器相关配置
 ├── .env.xxx                   # 环境变量配置
@@ -118,6 +118,7 @@ IDE工具强烈推荐使用[webstorm](https://www.jetbrains.com/webstorm/) 2019.
 ├── package.json               # package.json 依赖
 ├── postcss.config.js          # postcss 配置
 ├── tsconfig.json              # typescript 配置
+├── typedoc.js                 # typedoc 配置
 └── vue.config.js              # vue-cli 配置
 ```
 
@@ -166,7 +167,13 @@ yarn test:unit
 ### 自动生成 svg 组件(重要: 添加svg文件后请运行一次)
 
 ```bash
-yarn run svg
+yarn svg
+```
+
+### 自动生成文档 ./docs
+
+```bash
+yarn doc
 ```
 
 ### 自定义 Vue 配置
@@ -174,4 +181,5 @@ yarn run svg
 请看 [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 项目负责人
+
 urichen9606@gmail.com
