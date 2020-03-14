@@ -1,4 +1,4 @@
-const index = require('./settings.js')
+const settings = require('./settings.js')
 
 interface ICliSettings {
   name: string
@@ -29,9 +29,9 @@ interface ISentryCliSettings {
   release: string
 }
 
-export const cliSettings: ICliSettings = index.cliSettings
-export const appSettings: IAppSettings = index.appSettings
-export const sentryCliSettings: ISentryCliSettings = index.sentryCliSettings
+export const cliSettings: ICliSettings = settings.cliSettings
+export const appSettings: IAppSettings = settings.appSettings
+export const sentryCliSettings: ISentryCliSettings = settings.sentryCliSettings
 
 export default {
   cliSettings,
