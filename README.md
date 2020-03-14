@@ -67,8 +67,9 @@ vue + typescript模板(自用)，它基于 [vue](https://github.com/vuejs/vue), 
 
 使用[sentry](https://docs.sentry.io/)进行线上bug监控
 
+使用[typedoc](http://typedoc.org/)自动生成项目文档
 
-本项目使用[eslint](https://eslint.bootcss.com/)作为代码检测工具
+使用[eslint](https://eslint.bootcss.com/)作为代码检测工具
 
 IDE工具强烈推荐使用[webstorm](https://www.jetbrains.com/webstorm/) 2019.3以上的版本 和[vscode](https://code.visualstudio.com/)
 
@@ -87,6 +88,7 @@ IDE工具强烈推荐使用[webstorm](https://www.jetbrains.com/webstorm/) 2019.
 │   ├── api                    # 所有请求
 │   ├── assets                 # 主题 字体等静态资源 (由 webpack 处理加载)
 │   ├── components             # 全局组件
+│   ├── config                 # 全局配置文件(包括vuecli, sentry等)
 │   ├── directive              # 全局指令
 │   ├── filters                # 全局过滤函数
 │   ├── icons                  # svg 图标
@@ -101,9 +103,7 @@ IDE工具强烈推荐使用[webstorm](https://www.jetbrains.com/webstorm/) 2019.
 │   ├── views                  # 所有页面
 │   ├── App.vue                # 入口页面
 │   ├── main.js                # 入口文件 加载组件 初始化等
-│   ├── permission.ts          # 权限管理
-│   └── settings.ts            # 设置文件ts版导出用
-│       └─── settings.js       # 设置文件js
+│   └── permission.ts          # 权限管理
 ├── tests                      # 单元测试
 ├── webpackPlugins             # webpack插件
 ├── .browserslistrc            # browserslistrc 配置文件
@@ -111,7 +111,6 @@ IDE工具强烈推荐使用[webstorm](https://www.jetbrains.com/webstorm/) 2019.
 ├── .env.xxx                   # 环境变量配置
 ├── .eslintrc.js               # eslint 配置
 ├── .sentryclirc               # sentry前端异常监控 配置
-├── alias.config.js            # 路径别名 配置(使用webstorm IDE时需要将其设置为webpack配置文件才能正确解析路径别名)
 ├── babel.config.js            # babel-loader 配置
 ├── jest.config.js             # jest 单元测试配置
 ├── tailwind.config.js         # tailwind 配置

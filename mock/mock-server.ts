@@ -10,7 +10,7 @@ import path from 'path'
 import yaml from 'yamljs'
 import * as api from './api'
 import { accessTokenAuth } from './security'
-import settings from '../src/settings'
+import settings from '../src/config'
 
 const cliSettings = settings.cliSettings
 

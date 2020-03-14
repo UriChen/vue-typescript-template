@@ -1,4 +1,4 @@
-const settings = require('./src/settings')
+const settings = require('@/config')
 
 module.exports = {
   name: settings.cliSettings.name,

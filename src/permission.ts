@@ -6,7 +6,7 @@ import store, { localStorageData, sessionStorageData } from '@/store'
 import { UserModule } from '@/store/modules/user'
 import { AppModule } from '@/store/modules/app'
 import i18n from '@/lang'
-import settings from './settings'
+import { appSettings } from './config'
 import awaitTo from 'await-to-js'
 import { handleError } from '@/utils/handleErrors'
 import { requestCancelList } from '@/utils/request'
@@ -43,9 +43,9 @@ const getPageTitle = (key: string) => {
   const hasKey = i18n.te(`route.${key}`)
   if (hasKey) {
     const pageName = i18n.t(`route.${key}`)
-    return `${settings.appSettings.title} - ${pageName}`
+    return `${appSettings.title} - ${pageName}`
   }
-  return `${settings.appSettings.title}`
+  return `${appSettings.title}`
 }
 
 /**

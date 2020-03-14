@@ -2,9 +2,7 @@ import { VuexModule, Module, Mutation, Action, getModule } from 'vuex-module-dec
 import { setLanguage } from '@/utils/cookies'
 import { getLocale } from '@/lang'
 import store from '@/store'
-import settings from '@/settings'
-
-const appSettings = settings.appSettings
+import { appSettings } from '@/config'
 
 export enum DeviceType {
   Mobile,

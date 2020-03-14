@@ -35,8 +35,7 @@ const prodSettings = {
   baseUrl: `${HTTPS ? 'https' : 'http'}://${PROD_HOST}:${PROD_PORT}`, // 协议域名端口号
   assetsDir: 'static', // 静态资源目录
   publicPath: `/${APP_NAME}/`, // 服务器目录
-  outputDir: `D:/WWW/${APP_NAME}${VERSION}`, // 打包文件输出目录
-  shareUrl: '' // 演示地址
+  outputDir: `D:/WWW/${APP_NAME}${VERSION}` // 打包文件输出目录
 }
 
 const devSettings = {

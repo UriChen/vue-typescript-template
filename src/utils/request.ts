@@ -2,7 +2,7 @@ import Vue from 'vue'
 import axios from 'axios'
 import { UserModule } from '@/store/modules/user'
 import { REQUEST_CANCEL, RESOLVED_ERROR } from '@/utils/handleErrors'
-import settings from '@/settings'
+import { cliSettings } from '@/config'
 
 // 正在进行的请求列表,用于中断请求
 export const requestCancelList: any[] = []
@@ -14,7 +14,7 @@ export const requestCancelList: any[] = []
  * @withCredentials 是否允许跨域请求携带cookie
  */
 const service = axios.create({
-  baseURL: settings.cliSettings.baseUrl,
+  baseURL: cliSettings.baseUrl,
   timeout: 10000,
   withCredentials: true
 })

@@ -4,8 +4,6 @@ export interface ILoginParams {
 }
 
 export interface IResponse {
-  message: string
-  success: number
 }
 
 export interface ILoginResponse extends IResponse{
