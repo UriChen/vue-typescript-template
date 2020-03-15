@@ -1,22 +1,10 @@
-const os = require('os')
-const iptable = {}
-const ifaces = os.networkInterfaces()
-
-for (const dev in ifaces) {
-  ifaces[dev].forEach(function(details, alias) {
-    if (details.family === 'IPv4') {
-      iptable[dev + (alias ? ':' + alias : '')] = details.address
-    }
-  })
-}
-
 const IS_PROD = process.env.NODE_ENV === 'production'
 
 const APP_NAME = 'vue-typescript-template'
 const VERSION = '@1.0.0'
 const HTTPS = true
 
-const DEV_HOST = Object.values(iptable).find(item => item !== '127.0.0.1') || '192.168.0.105'
+const DEV_HOST = '127.0.0.1'
 const DEV_PORT = 3000
 const DEV_SERVER_PORT = 8080
 
@@ -32,7 +20,7 @@ const prodSettings = {
   https: HTTPS, // 是否开启https
   host: PROD_HOST, // 域名
   port: PROD_PORT, // 端口
-  baseUrl: `${HTTPS ? 'https' : 'http'}://${PROD_HOST}:${PROD_PORT}`, // 协议域名端口号
+  baseUrl: `${HTTPS ? 'https' : 'http'}://${PROD_HOST}${PROD_PORT !== 80 ? ':' + PROD_PORT : ''}`,
   assetsDir: 'static', // 静态资源目录
   publicPath: `/${APP_NAME}/`, // 服务器目录
   outputDir: `D:/WWW/${APP_NAME}${VERSION}` // 打包文件输出目录
@@ -45,7 +33,7 @@ const devSettings = {
   devServerPort: DEV_SERVER_PORT,
   host: DEV_HOST,
   port: DEV_PORT,
-  baseUrl: `${HTTPS ? 'https' : 'http'}://${DEV_HOST}:${DEV_PORT}`
+  baseUrl: `${HTTPS ? 'https' : 'http'}://${DEV_HOST}${DEV_PORT !== 80 ? ':' + DEV_PORT : ''}`
 }
 
 const cliSettings = IS_PROD ? prodSettings : devSettings

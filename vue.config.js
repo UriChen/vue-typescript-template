@@ -1,5 +1,5 @@
 const path = require('path')
-const settings = require('@/config/settings.js')
+const settings = require('./src/config/settings.js')
 const SentryWebpackPlugin = require('@sentry/webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
